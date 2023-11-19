@@ -13,7 +13,7 @@ on:
 jobs:
   deploy:
     outputs:
-      job-output: ${{ steps.step-output.outputs.set-result }}
+      job-output: ${{ steps.output-result.outputs.step-result }}
     name: Deploy
     runs-on: ubuntu-latest
     steps:
@@ -23,6 +23,6 @@ jobs:
           name: ${{ inputs.artifact-name }}
       - name: Deploy
         run: echo 'Deploying using the reusable workflow!'
-      - name: Output the result
-        id: step-output
-        run: echo 'set-result=success' >> '$GITHUB_OUTPUT'
+      - name: Output result
+        id: output-result
+        run: echo 'step-result=success' >> '$GITHUB_OUTPUT'
