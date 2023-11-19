@@ -7,7 +7,7 @@ on:
 
 jobs:
   lint:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -23,7 +23,7 @@ jobs:
       - name: Lint code
         run: npm run lint
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -47,7 +47,7 @@ jobs:
           path: test.json
   build:
     needs: test
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -75,7 +75,7 @@ jobs:
       artifact-name: dist-files
   print:
     needs: deploy
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Print
         run: echo '${{ needs.deploy.outputs.result }}'

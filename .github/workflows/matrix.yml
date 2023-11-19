@@ -8,13 +8,13 @@ jobs:
     strategy:
       matrix:
         node-version: [18, 20]
-        os: ['ubuntu-lastest', 'windows-latest']
+        os: ['ubuntu-latest', 'windows-latest']
         include:
           - node-version: 14
-            os: ubuntu-lastest
+            os: ubuntu-latest
         exclude:
           - node-version: 18
-            os: windows-lastest
+            os: windows-latest
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
