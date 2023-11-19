@@ -8,6 +8,7 @@ on:
         required: true
     outputs:
       result:
+        description: 'The workflow result'
         value: ${{ jobs.deploy.outputs.job-output }}
 
 jobs:
@@ -25,4 +26,4 @@ jobs:
         run: echo 'Deploying using the reusable workflow!'
       - name: Output result
         id: output-result
-        run: echo 'step-result=success' >> '$GITHUB_OUTPUT'
+        run: echo 'step-result=success' >> $GITHUB_OUTPUT
