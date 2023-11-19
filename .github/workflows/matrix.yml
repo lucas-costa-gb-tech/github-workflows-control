@@ -1,9 +1,6 @@
 name: Matrix
 
-on:
-  push:
-    branches:
-      - master
+on: workflow_call
 
 jobs:
   build:
