@@ -6,9 +6,14 @@ on:
       artifact-name:
         type: string
         required: true
+    outputs:
+      result:
+        value: ${{ jobs.deploy.outputs.job-output }}
 
 jobs:
   deploy:
+    outputs:
+      job-output: ${{ steps.step-output.outputs.set-result }}
     name: Deploy
     runs-on: windows-latest
     steps:
@@ -18,3 +23,6 @@ jobs:
           name: ${{ inputs.artifact-name }}
       - name: Deploy
         run: echo 'Deploying using the reusable workflow!'
+      - name: Output the result
+        id: step-output
+        run: echo 'set-result=success' >> '$GITHUB_OUTPUT'

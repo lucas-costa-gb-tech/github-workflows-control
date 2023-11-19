@@ -73,3 +73,9 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       artifact-name: dist-files
+  print:
+    needs: deploy
+    runs-on: windows-latest
+    steps:
+      - name: Print
+        run: echo '${{ needs.deploy.outputs.result }}'
